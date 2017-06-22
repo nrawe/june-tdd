@@ -11,7 +11,7 @@ function debug(array $context = [])
     \Psy\debug($context);
 }
 
-function bug(string $description, callable $test)
+function bug(string $name, callable $test)
 {
     $test = new Test($name, $test, Test::BUG);
 
@@ -45,14 +45,14 @@ function unit(string $name, callable $tests)
     harness()->run($unit);
 }
 
-function xbug()
+function xbug(string $name, callable $test)
 {
     $test = new Test($name, $test, Test::BUG | Test::SKIPPED);
 
     harness()->unit()->add($test);
 }
 
-function xtest()
+function xtest(string $name, callable $test)
 {
     $test = new Test($name, $test, Test::TEST | Test::SKIPPED);
 

@@ -28,7 +28,9 @@ class Reporter
 
     protected function stats(Stats $stats): void
     {
-
+        foreach ((array)$stats as $stat => $count) {
+            $this->line(ucfirst($stat) . ': ' . $count);
+        }
     }
 
     protected function test(Test $test): void

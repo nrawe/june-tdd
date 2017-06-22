@@ -24,7 +24,7 @@ class Stats
     {
         $this->tests++;
         
-        $test->success ? $this->passed++ : $this->failed($test); 
+        $test->success ? $this->passed++ : $this->failed($test);
     }
 
     protected function skipped(): void

@@ -3,6 +3,7 @@
 namespace June\Console\Commands;
 
 use June\Console\Command;
+use June\Framework\Harness;
 use Illuminate\Filesystem\Filesystem;
 
 class RunCommand extends Command
@@ -11,7 +12,7 @@ class RunCommand extends Command
 
     protected $description = 'Runs all of the tests in the current directory.';
 
-    public function handle(Filesystem $fs)
+    public function handle(Filesystem $fs, Harness $harness)
     {
         $require = static function ($file) {
             require $file;
@@ -22,5 +23,7 @@ class RunCommand extends Command
                 $require($file);
             }
         }
+
+        $harness->finish();
     }
 }
