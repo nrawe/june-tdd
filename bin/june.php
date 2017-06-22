@@ -6,7 +6,7 @@ $container = Illuminate\Container\Container::getInstance();
 
 $application = new June\Console\Application($container, '1.0.0');
 $application->resolveCommands([
-    June\Console\Commands\TestCommand::class,
+    June\Console\Commands\RunCommand::class,
 ]);
 
 $application->run();
