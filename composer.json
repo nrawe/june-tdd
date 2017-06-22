@@ -1,0 +1,33 @@
+{
+    "name": "nrawe/june",
+    "description": "A small, simple TDD framework for PHP",
+    "type": "app",
+    "require": {
+        "illuminate/console": "^5.4",
+        "illuminate/container": "^5.4",
+        "illuminate/support": "^5.4",
+        "illuminate/filesystem": "^5.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick Rawe",
+            "email": "nrawe@reapit.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "June\\": "src/"
+        },
+        "files": [
+            "src/dsl.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "suggest": {
+        "psy/psysh": "If you want to use the June\\debug() helper"
+    },
+    "require-dev": {
+        "psy/psysh": "^0.8.7"
+    }
+}
