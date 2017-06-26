@@ -3,24 +3,22 @@
     "description": "A small, simple TDD framework for PHP",
     "type": "app",
     "require": {
-        "illuminate/console": "^5.4",
-        "illuminate/container": "^5.4",
-        "illuminate/support": "^5.4",
-        "illuminate/filesystem": "^5.4"
+        "league/climate": "^3.2"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Nick Rawe",
-            "email": "nrawe@reapit.com"
+            "homepage": "https://github.com/nrawe"
         }
     ],
     "autoload": {
         "psr-4": {
-            "June\\": "src/"
+            "June\\Framework\\": "library/"
         },
         "files": [
-            "src/dsl.php"
+            "library/helpers.php",
+            "library/dsl.php"
         ]
     },
     "minimum-stability": "stable",
