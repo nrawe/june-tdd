@@ -13,3 +13,29 @@ Units.
 It should be noted that the right Unit size is not about Single Responsibility
 Principle. SRP is a good rule of thumb but cannot always be applied. So, while
 it does suggest it, it isn't required to follow this principle.
+
+An example of a test in June looks like--
+
+```php
+<?php
+
+use function June\{unit, test, bug};
+
+unit(Calculator::class, function () {
+
+    test('2 + 2', function ($equal) {
+        $calculator = new Calculator();
+
+        $equal(
+            $calculator->add(2, 2), 4
+        );
+    });
+
+});
+
+```
+
+You can then run `$ june.phar path/to/test.php` to run just that individual
+test. If you want to run all tests, run `$ june.phar` in a directory which
+contains a `tests` folder, or `$ june.phar path/to/tests/`.
+
