@@ -10,7 +10,7 @@ class Harness
 
     protected $unit;
 
-    public function __construct(?Reporter $reporter, ?Stats $stats)
+    public function __construct(Reporter $reporter, Stats $stats)
     {
         $this->reporter = $reporter;
         $this->stats = $stats;
