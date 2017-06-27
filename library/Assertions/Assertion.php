@@ -24,13 +24,13 @@ class Assertion
         $this->assertion = $assertion;
     }
 
-    public function __invoke($a, $b)
+    public function __invoke($subject, $expectation)
     {
-        if ($this->assertion->passes($a, $b)) {
+        if ($this->assertion->passes($subject, $expectation)) {
             return;
         }
 
-        throw new Exception($this->message($a, $b));
+        throw new Exception($this->message($subject, $expectation));
     }
 
     protected function findAssertion(string $name): ?Contract
@@ -44,10 +44,12 @@ class Assertion
         }
     }
 
-    protected function message($a, $b): string
+    protected function message($subject, $expectation): string
     {
         return str_replace(
-            ['%a', '%b'], [$a, $b], $this->assertion->message()
+            ['%subject', '%expectation'],
+            [$subject, $expectation],
+            $this->assertion->message()
         );
     }
 }

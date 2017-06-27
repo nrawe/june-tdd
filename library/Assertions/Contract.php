@@ -8,5 +8,5 @@ interface Contract
 
     public function name(): string;
 
-    public function passes($a, $b): bool;
+    public function passes($subject, $expectation): bool;
 }

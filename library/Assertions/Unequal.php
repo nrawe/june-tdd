@@ -6,7 +6,7 @@ class Unequal implements Contract
 {
     public function message(): string
     {
-        return '%a === %b';
+        return '%subject === %expectation';
     }
 
     public function name(): string
@@ -14,8 +14,8 @@ class Unequal implements Contract
         return 'unequal';
     }
 
-    public function passes($a, $b): bool
+    public function passes($subject, $expectation): bool
     {
-        return $a !== $b;
+        return $subject !== $expectation;
     }
 }
