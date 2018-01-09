@@ -2,7 +2,7 @@
 
 namespace June\Framework\Cases;
 
-use June\Framework\AssertionFactory;
+use June\Framework\Factories\AssertionFactory;
 use ReflectionFunction;
 use Throwable;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace June\Framework;
+namespace June\Framework\Factories;
 
 use June\Framework\Assertions\{Equal, Unequal};
 use June\Framework\Contracts\Assertion;
