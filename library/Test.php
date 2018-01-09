@@ -20,6 +20,11 @@ class Test
         $this->name = $name;
     }
 
+    public function canExecute(): bool
+    {
+        return true;
+    }
+
     public function execute(): bool
     {
         try {

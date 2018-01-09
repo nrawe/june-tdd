@@ -4,7 +4,7 @@ namespace June\Framework;
 
 class SkippedTest extends Test
 {
-    public function execute(): bool
+    public function canExecute(): bool
     {
         return false;
     }

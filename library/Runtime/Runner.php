@@ -33,7 +33,7 @@ class Runner
 
     protected function executeCase(Unit $unit, Test $case): bool
     {
-        if ($case instanceof Skipped) {
+        if (! $case->canExecute()) {
             return true;
         }
 
