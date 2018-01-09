@@ -22,14 +22,14 @@ function bug(string $name, callable $case)
     harness(null)->test($name, $case);
 }
 
-function debug(array $context = [])
-{
-    \Psy\debug($context);
-}
-
 function test(string $name, callable $case)
 {
     harness()->test($name, $case);
+}
+
+function tinker(array $context = [])
+{
+    \Psy\debug($context);
 }
 
 function unit(string $name, callable $tests)
