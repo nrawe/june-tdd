@@ -1,7 +1,8 @@
 <?php
 
-namespace June\Framework;
+namespace June\Framework\Runtime;
 
+use June\Framework\{Suite, Unit};
 use June\Framework\Assertions\Exception;
 use June\Framework\Cases\{AbstractCase, Bug, Test, Skipped};
 use League\CLImate\CLImate;

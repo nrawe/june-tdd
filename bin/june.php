@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use League\CLImate\CLImate;
-use June\Framework\{Loader, Harness, Runner};
+use June\Framework\Runtime\{Loader, Harness, Runner};
 use function June\harness;
 
 $runner  = new Runner(new CLImate);

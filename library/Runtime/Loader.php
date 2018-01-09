@@ -1,6 +1,6 @@
 <?php
 
-namespace June\Framework;
+namespace June\Framework\Runtime;
 
 use InvalidArgumentException;
 use RecursiveDirectoryIterator;

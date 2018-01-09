@@ -1,6 +1,8 @@
 <?php
 
-namespace June\Framework;
+namespace June\Framework\Runtime;
+
+use June\Framework\{Unit, Suite};
 
 class Harness
 {

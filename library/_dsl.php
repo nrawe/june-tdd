@@ -2,7 +2,7 @@
 
 namespace June;
 
-use June\Framework\Harness;
+use June\Framework\Runtime\Harness;
 use June\Framework\Cases\{Bug, Test, Skipped};
 use RuntimeException;
 
