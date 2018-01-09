@@ -31,7 +31,7 @@ class BadUserException extends \RuntimeException
      * $params is expected to be a <string, value>[] of parameterss that can
      *  be replaced in the $reason string.
      */
-    public static function create(string $reason, array $params): BadUserException
+    public static function new(string $reason, array $params): BadUserException
     {
         return new static(parameterise_string($reason, $params));
     }
