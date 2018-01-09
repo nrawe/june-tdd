@@ -1,12 +1,12 @@
 <?php
 
-namespace June\Framework\Cases;
+namespace June\Framework;
 
 use June\Framework\Factories\AssertionFactory;
 use ReflectionFunction;
 use Throwable;
 
-class AbstractCase
+class Test
 {
     protected $case;
 

@@ -3,7 +3,6 @@
 namespace June;
 
 use June\Framework\Runtime\Harness;
-use June\Framework\Cases\{Bug, Test, Skipped};
 use RuntimeException;
 use June\Framework\Factories\HarnessFactory;
 
@@ -20,7 +19,7 @@ function harness(): Harness
 
 function bug(string $name, callable $case)
 {
-    harness(null)->unit()->add(new Bug($name, $case));
+    harness(null)->test($name, $case);
 }
 
 function debug(array $context = [])
@@ -30,22 +29,22 @@ function debug(array $context = [])
 
 function test(string $name, callable $case)
 {
-    harness(null)->unit()->add(new Test($name, $case));
+    harness()->test($name, $case);
 }
 
 function unit(string $name, callable $tests)
 {
-    harness(null)->unit($name);
+    harness()->unit($name);
 
     $tests();
 }
 
 function xbug(string $name, callable $case)
 {
-    harness(null)->unit()->add(new Skipped($name, $case));
+    harness()->skipped($name, $case);
 }
 
 function xtest(string $name, callable $case)
 {
-    harness(null)->unit()->add(new Skipped($name, $case));
+    harness()->skipped($name, $case);
 }

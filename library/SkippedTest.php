@@ -1,8 +1,8 @@
 <?php
 
-namespace June\Framework\Cases;
+namespace June\Framework;
 
-class Skipped extends AbstractCase
+class SkippedTest extends Test
 {
     public function execute(): bool
     {

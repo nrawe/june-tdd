@@ -17,7 +17,7 @@ class Unit implements Countable
         $this->name  = $name;
     }
 
-    public function add(AbstractCase $case): void
+    public function add(Test $case): void
     {
         $this->cases[] = $case;
     }

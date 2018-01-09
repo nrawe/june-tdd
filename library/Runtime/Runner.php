@@ -2,9 +2,8 @@
 
 namespace June\Framework\Runtime;
 
-use June\Framework\{Suite, Unit};
+use June\Framework\{Suite, Test, Unit};
 use June\Framework\Assertions\Exception;
-use June\Framework\Cases\{AbstractCase, Bug, Test, Skipped};
 use League\CLImate\CLImate;
 use Throwable;
 
@@ -32,7 +31,7 @@ class Runner
         return true;
     }
 
-    protected function executeCase(Unit $unit, AbstractCase $case): bool
+    protected function executeCase(Unit $unit, Test $case): bool
     {
         if ($case instanceof Skipped) {
             return true;
@@ -47,7 +46,7 @@ class Runner
         return $result;
     }
 
-    protected function printFailure(Unit $unit, AbstractCase $case)
+    protected function printFailure(Unit $unit, Test $case)
     {
         $this->cli
              ->underline()

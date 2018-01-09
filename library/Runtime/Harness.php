@@ -2,7 +2,7 @@
 
 namespace June\Framework\Runtime;
 
-use June\Framework\{Unit, Suite};
+use June\Framework\{SkippedTest, Suite, Test, Unit};
 
 class Harness
 {
@@ -44,5 +44,15 @@ class Harness
         }
 
         return $this->unit;
+    }
+
+    public function test(string $name, callable $test)
+    {
+        $this->unit()->add(new Test($name, $test));
+    }
+
+    public function skipped(string $name, callable $test)
+    {
+        $this->unit()->add(new SkippedTest($name, $test));
     }
 }
