@@ -5,17 +5,14 @@ namespace June;
 use June\Framework\Runtime\Harness;
 use June\Framework\Cases\{Bug, Test, Skipped};
 use RuntimeException;
+use June\Framework\Factories\HarnessFactory;
 
-function harness(?Harness $harness): Harness
+function harness(): Harness
 {
     static $instance;
-    
-    if ($harness) {
-        $instance = $harness;
-    }
 
     if (! $instance) {
-        throw new RuntimeException('No harness instance defined');
+        $instance = (new HarnessFactory)->get();
     }
 
     return $instance;
