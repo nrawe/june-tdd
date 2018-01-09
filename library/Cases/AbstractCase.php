@@ -2,7 +2,7 @@
 
 namespace June\Framework\Cases;
 
-use June\Framework\Assertions\Assertion;
+use June\Framework\AssertionFactory;
 use ReflectionFunction;
 use Throwable;
 
@@ -45,9 +45,10 @@ class AbstractCase
     {
         $assertions = [];
         $reflection = new ReflectionFunction($this->case);
+        $factory    = new AssertionFactory();
 
         foreach ($reflection->getParameters() as $parameter) {
-            $assertions[] = new Assertion($parameter->getName());
+            $assertions[] = $factory->findOrFail($parameter->getName());
         }
 
         return $assertions;

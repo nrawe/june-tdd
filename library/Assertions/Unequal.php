@@ -2,8 +2,12 @@
 
 namespace June\Framework\Assertions;
 
-class Unequal implements Contract
+use June\Framework\Contracts\Assertion;
+
+class Unequal implements Assertion
 {
+    use Assertable;
+
     public function message(): string
     {
         return '%subject === %expectation';
