@@ -27,5 +27,8 @@
     },
     "require-dev": {
         "psy/psysh": "^0.8.7"
+    },
+    "scripts": {
+        "build": "php box.phar build"
     }
 }
