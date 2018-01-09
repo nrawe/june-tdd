@@ -45,10 +45,10 @@ function unit(string $name, callable $tests)
 
 function xbug(string $name, callable $case)
 {
-    harness(null)->unit()->add(new SkippedCase($name, $case));
+    harness(null)->unit()->add(new Skipped($name, $case));
 }
 
 function xtest(string $name, callable $case)
 {
-    harness(null)->unit()->add(new SkippedCase($name, $case));
+    harness(null)->unit()->add(new Skipped($name, $case));
 }
