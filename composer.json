@@ -3,7 +3,8 @@
     "description": "A small, simple TDD framework for PHP",
     "type": "app",
     "require": {
-        "league/climate": "^3.2"
+        "league/climate": "^3.2",
+        "psy/psysh": "^0.8.7"
     },
     "license": "MIT",
     "authors": [
@@ -22,12 +23,6 @@
         ]
     },
     "minimum-stability": "stable",
-    "suggest": {
-        "psy/psysh": "If you want to use the June\\debug() helper"
-    },
-    "require-dev": {
-        "psy/psysh": "^0.8.7"
-    },
     "scripts": {
         "build": "php box.phar build"
     }
