@@ -9,31 +9,31 @@ class Unit implements Countable
 {
     protected $name;
 
-    protected $cases;
+    protected $steps;
 
     public function __construct(string $name)
     {
-        $this->cases = [];
+        $this->steps = [];
         $this->name  = $name;
     }
 
-    public function add(Step $case): void
+    public function add(Step $step): void
     {
-        $this->cases[] = $case;
-    }
-
-    public function cases(): array
-    {
-        return $this->cases;
+        $this->steps[] = $step;
     }
 
     public function count(): int
     {
-        return count($this->cases);
+        return count($this->steps);
     }
 
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function steps(): array
+    {
+        return $this->steps;
     }
 }

@@ -27,7 +27,7 @@ class Runner
         $progress = $this->feedback->suiteProgress($suite);
         
         foreach ($suite->units() as $unit) {
-            foreach ($unit->cases() as $step) {
+            foreach ($unit->steps() as $step) {
                 $progress->advance(1);
 
                 if (! $this->executor->execute($unit, $step)) {
