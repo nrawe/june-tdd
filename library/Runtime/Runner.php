@@ -3,70 +3,39 @@
 namespace June\Framework\Runtime;
 
 use June\Framework\{Suite, Test, Unit};
-use June\Framework\Assertions\Exception;
-use League\CLImate\CLImate;
-use Throwable;
 
 class Runner
 {
-    public function __construct(CLImate $cli)
+    /**
+     * @var StepExecutor
+     */
+    protected $executor;
+
+    /**
+     * @var Feedback
+     */
+    protected $feedback;
+
+    public function __construct(Feedback $feedback, StepExecutor $executor)
     {
-        $this->cli = $cli;
+        $this->feedback = $feedback;
+        $this->executor = $executor;
     }
 
     public function run(Suite $suite): bool
     {
-        $progress = $this->cli->progress()->total($suite->count());
+        $progress = $this->feedback->suiteProgress($suite);
         
         foreach ($suite->units() as $unit) {
-            foreach ($unit->cases() as $case) {
+            foreach ($unit->cases() as $step) {
                 $progress->advance(1);
 
-                if (! $this->executeCase($unit, $case)) {
+                if (! $this->executor->execute($unit, $step)) {
                     return false;
                 }
             }
         }
 
         return true;
-    }
-
-    protected function executeCase(Unit $unit, Test $case): bool
-    {
-        if (! $case->canExecute()) {
-            return true;
-        }
-
-        $result = $case->execute();
-
-        if (! $result) {
-            $this->printFailure($unit, $case);
-        }
-
-        return $result;
-    }
-
-    protected function printFailure(Unit $unit, Test $case)
-    {
-        $this->cli
-             ->underline()
-             ->out($unit->name())
-        ;
-
-        $this->cli
-             ->bold()
-             ->inline(' - ' . $case->name() . ' ')
-             ->red()
-             ->inline('✗')
-        ;
-
-        $f = $case->failure();
-
-        $this->cli
-             ->tab()
-             ->grey(
-                 $f instanceof Exception ? $f->getMessage () : $f
-             )
-        ;
     }
 }

@@ -3,14 +3,17 @@
 namespace June\Framework\Factories;
 
 use League\CLImate\CLImate;
-use June\Framework\Runtime\{Loader, Harness, Runner};
+use June\Framework\Runtime\{Feedback, Loader, Harness, Runner, StepExecutor};
 
 class HarnessFactory
 {
     public function get(): Harness
     {
-        $runner  = new Runner(new CLImate);
-        $harness = new Harness(new Loader, $runner);
+        $feedback = new Feedback(new CLImate);
+        $executor = new StepExecutor(new AssertionFactory, $feedback);
+
+        $runner  = new Runner($feedback, $executor);
+        $harness = new Harness(new Loader, $runner, new StepFactory);
         $harness->path($argv[1] ?? getcwd() . '/tests');
 
         return $harness;

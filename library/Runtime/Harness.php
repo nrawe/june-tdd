@@ -3,6 +3,7 @@
 namespace June\Framework\Runtime;
 
 use June\Framework\{SkippedTest, Suite, Test, Unit};
+use June\Framework\Factories\StepFactory;
 
 class Harness
 {
@@ -13,10 +14,16 @@ class Harness
      */
     protected $path;
 
-    public function __construct(Loader $loader, Runner $runner)
+    /**
+     * @var StepFactory
+     */
+    protected $steps;
+
+    public function __construct(Loader $loader, Runner $runner, StepFactory $steps)
     {
         $this->loader = $loader;
         $this->runner = $runner;
+        $this->steps = $steps;
         $this->suite  = new Suite();
     }
 
@@ -46,13 +53,13 @@ class Harness
         return $this->unit;
     }
 
-    public function test(string $name, callable $test)
+    public function test(string $name, callable $body)
     {
-        $this->unit()->add(new Test($name, $test));
+        $this->unit()->add($this->steps->test($name, $body));
     }
 
-    public function skipped(string $name, callable $test)
+    public function skipped(string $name, callable $body)
     {
-        $this->unit()->add(new SkippedTest($name, $test));
+        $this->unit()->add($this->steps->skipped($name, $body));
     }
 }

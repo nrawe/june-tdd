@@ -3,7 +3,7 @@
 namespace June\Framework;
 
 use Countable;
-use June\Framework\Cases\AbstractCase;
+use June\Framework\Contracts\Step;
 
 class Unit implements Countable
 {
@@ -17,7 +17,7 @@ class Unit implements Countable
         $this->name  = $name;
     }
 
-    public function add(Test $case): void
+    public function add(Step $case): void
     {
         $this->cases[] = $case;
     }
