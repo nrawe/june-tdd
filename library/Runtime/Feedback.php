@@ -27,6 +27,16 @@ class Feedback
     }
 
     /**
+     * Prints out information about a failed assertion to the user.
+     */
+    public function assertionError(Step $step, AssertionException $ex): void
+    {
+        $this->unit($step->unit(null));
+        $this->failedStep($step);
+        $this->failureMessage($ex->getMessage());
+    }
+
+    /**
      * Prints the name of the $unit to the user.
      */
     public function unit(Unit $unit): void
@@ -51,33 +61,41 @@ class Feedback
     }
 
     /**
-     * Prints out the exception 
+     * Prints out a full, general exception to the user.
      */
     public function generalError(Step $step, Throwable $ex): void
     {
         $this->unit($step->unit(null));
         $this->failedStep($step);
-
-        $this->cli
-            ->tab()
-            ->grey(
-                $ex->getMessage()
-            )
-        ;
+        $this->failureMessage($ex);
     }
 
-    public function assertionError(Step $step, AssertionException $ex): void
-    {
-        $this->generalError($step, $ex);
-    }
-
+    /**
+     * Informs the user of a mistake that they've made.
+     */
     public function userError(Step $step, BadUserException $ex): void
     {
-        $this->generalError($step, $ex);
+        $this->unit($step->unit(null));
+        $this->failedStep($step);
+        $this->failureMessage($ex->getMessage());
     }
 
+    /**
+     * Returns a progress bar instance for progressing through the tests.
+     */
     public function suiteProgress(Suite $suite)
     {
         return $this->cli->progress()->total($suite->count());
+    }
+
+    /**
+     * Prints a failure message to the user.
+     */
+    protected function failureMessage(string $message)
+    {
+        $this->cli
+            ->tab()
+            ->grey($message)
+        ;
     }
 }
