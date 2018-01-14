@@ -19,6 +19,8 @@ class BadUserException extends \RuntimeException
 {
     //region Reasons
 
+    const TEST_FILE_MALFORMED = 'File "%name" is not a valid test file. Must end with "Test.php"';
+    const TEST_FILE_NONEXISTANT = 'Test file "%name" does not exist';
     const UNKNOWN_ASSERTION = 'Tried to inject unknown assertion "%name"';
     
     //endregion
