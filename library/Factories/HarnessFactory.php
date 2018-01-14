@@ -13,7 +13,7 @@ class HarnessFactory
 
         $runner  = new Runner(new AssertionFactory, $feedback);
         $harness = new Harness(new Loader, $runner, new StepFactory);
-        $harness->path($argv[1] ?? getcwd() . '/tests');
+        $harness->path($_SERVER['argv'][1] ?? getcwd() . '/tests');
 
         return $harness;
     }
