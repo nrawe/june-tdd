@@ -4,15 +4,22 @@ namespace June\Framework;
 
 use Countable;
 
+/**
+ * A Suite stores Units that have been registered for testing.
+ */
 class Suite implements Countable
 {
-    protected $units;
+    /**
+     * Stores the units which have been registered during the loading of the
+     * test files.
+     * 
+     * @var Unit
+     */
+    protected $units = [];
 
-    public function __construct()
-    {
-        $this->units = [];
-    }
-
+    /**
+     * Returns information about the suite for use in debugging.
+     */
     public function __debugInfo(): array
     {
         return [
@@ -21,11 +28,17 @@ class Suite implements Countable
         ];
     }
 
+    /**
+     * Registers a Unit instance with the Suite.
+     */
     public function add(Unit $unit): void
     {
         $this->units[] = $unit;
     }
 
+    /**
+     * Returns the count of the number of tests that have been registered.
+     */
     public function count(): int
     {
         $count = 0;
@@ -37,6 +50,9 @@ class Suite implements Countable
         return $count;
     }
 
+    /**
+     * Returns the Units which have been registered with the Suite.
+     */
     public function units(): array
     {
         return $this->units;
