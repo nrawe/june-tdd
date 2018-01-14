@@ -24,6 +24,13 @@ trait Step
         $this->name = $name;
     }
 
+    public function __debugInfo(): array
+    {
+        return [
+            'name' => $this->name,
+        ];
+    }
+
     public function body(): callable
     {
         return $this->body;
