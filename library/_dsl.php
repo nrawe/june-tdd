@@ -93,5 +93,5 @@ function xbug(string $name, callable $steps)
  */
 function xtest(string $name, callable $steps)
 {
-    harness()->skipped($name, $case);
+    harness()->skipped($name, $steps);
 }
