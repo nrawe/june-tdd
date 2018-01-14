@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": ">=7.1",
         "league/climate": "^3.2"
     },
     "require-dev": {
