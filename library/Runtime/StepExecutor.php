@@ -21,19 +21,19 @@ class StepExecutor
         $this->feedback = $feedback;
     }
 
-    public function execute(Unit $unit, Step $step): bool
+    public function execute(Step $step): bool
     {
         try {
             return $this->attempt($step);
 
         } catch (AssertionException $assertion) {
-            $this->feedback->assertionError($unit, $step, $assertion);
+            $this->feedback->assertionError($step, $assertion);
 
         } catch (BadUserException $user) {
-            $this->feedback->userError($unit, $step, $user);
+            $this->feedback->userError($step, $user);
 
         } catch (Throwable $thrown) {
-            $this->feedback->generalError($unit, $step, $thrown);
+            $this->feedback->generalError($step, $thrown);
         }
 
         return false;

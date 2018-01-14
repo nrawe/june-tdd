@@ -30,7 +30,7 @@ class Runner
             foreach ($unit->steps() as $step) {
                 $progress->advance(1);
 
-                if (! $this->executor->execute($unit, $step)) {
+                if (! $this->executor->execute($step)) {
                     return false;
                 }
             }

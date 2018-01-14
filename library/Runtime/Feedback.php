@@ -26,6 +26,9 @@ class Feedback
         $this->cli = $cli;
     }
 
+    /**
+     * Prints the name of the $unit to the user.
+     */
     public function unit(Unit $unit): void
     {
         $this->cli
@@ -34,6 +37,9 @@ class Feedback
         ;
     }
 
+    /**
+     * Prints the name of the $step to the user as a failure.
+     */
     public function failedStep(Step $step): void
     {
         $this->cli
@@ -44,9 +50,12 @@ class Feedback
         ;
     }
 
-    public function generalError(Unit $unit, Step $step, Throwable $ex): void
+    /**
+     * Prints out the exception 
+     */
+    public function generalError(Step $step, Throwable $ex): void
     {
-        $this->unit($unit);
+        $this->unit($step->unit(null));
         $this->failedStep($step);
 
         $this->cli
@@ -57,14 +66,14 @@ class Feedback
         ;
     }
 
-    public function assertionError(Unit $unit, Step $step, AssertionException $ex): void
+    public function assertionError(Step $step, AssertionException $ex): void
     {
-        $this->generalError($unit, $step, $ex);
+        $this->generalError($step, $ex);
     }
 
-    public function userError(Unit $unit, Step $step, BadUserException $ex): void
+    public function userError(Step $step, BadUserException $ex): void
     {
-        $this->generalError($unit, $step, $ex);
+        $this->generalError($step, $ex);
     }
 
     public function suiteProgress(Suite $suite)
