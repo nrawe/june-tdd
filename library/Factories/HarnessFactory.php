@@ -10,9 +10,8 @@ class HarnessFactory
     public function get(): Harness
     {
         $feedback = new Feedback(new CLImate);
-        $executor = new StepExecutor(new AssertionFactory, $feedback);
 
-        $runner  = new Runner($feedback, $executor);
+        $runner  = new Runner(new AssertionFactory, $feedback);
         $harness = new Harness(new Loader, $runner, new StepFactory);
         $harness->path($argv[1] ?? getcwd() . '/tests');
 
