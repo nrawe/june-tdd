@@ -2,6 +2,8 @@
 
 namespace June\Framework\Steps;
 
+use June\Framework\Contracts\Unit;
+
 trait Step
 {
     /**
@@ -18,6 +20,13 @@ trait Step
      */
     protected $name;
 
+    /**
+     * The Unit instance that the Step belongs to.
+     * 
+     * @var Unit|null
+     */
+    protected $unit;
+
     public function __construct(string $name, callable $body)
     {
         $this->body = $body;
@@ -28,6 +37,7 @@ trait Step
     {
         return [
             'name' => $this->name,
+            'unit' => $this->unit,
         ];
     }
 
@@ -39,5 +49,14 @@ trait Step
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function unit(?Unit $unit): ?Unit
+    {
+        if ($unit) {
+            $this->unit = $unit;
+        }
+
+        return $this->unit;
     }
 }

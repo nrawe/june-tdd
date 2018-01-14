@@ -3,14 +3,14 @@
 namespace June\Framework;
 
 use Countable;
-use June\Framework\Contracts\Step;
+use June\Framework\Contracts\{Step, Unit as UnitContract};
 
 /**
  * A Unit represents a class that needs to be tested.
  * 
  * It is comprised of a series of Steps which comprise the actual steps.
  */
-class Unit implements Countable
+class Unit implements Countable, UnitContract
 {
     /**
      * The name of the Unit being tested.
@@ -37,6 +37,8 @@ class Unit implements Countable
     public function add(Step $step): void
     {
         $this->steps[] = $step;
+
+        $step->unit($this);
     }
 
     /**

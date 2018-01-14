@@ -19,4 +19,9 @@ interface Step
      * fails.
      */
     public function name(): string;
+
+    /**
+     * Gets or sets the $unit for the Step.
+     */
+    public function unit(?Unit $unit): ?Unit;
 }
