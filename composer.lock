@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bd47ffa8d350401bca89ea7e9ce07e3",
+    "content-hash": "9493ba62d122f3d5a96b507c6af03658",
     "packages": [
         {
             "name": "league/climate",
@@ -607,6 +607,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.1"
+    },
     "platform-dev": []
 }
