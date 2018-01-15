@@ -4,7 +4,7 @@
 I wrote this framework as a bit of a whim based on my experiences on writing
 [tapped](https://github.com/nrawe/tapped), but actually... I quite like it!
 
-The goal of this framework is to provide a syntatic clean way of structuring
+The goal of this framework is to provide a syntatically clean way of structuring
 tests, leveraging language improvements in PHP. Its founding principle is that
 TDD is about finding **designs**, not **bugs**. We still need to provide cases
 for bugs, but they're not the day one most important thing.
