@@ -51,7 +51,7 @@ need to be performed in order verify correct function, and the `test()` function
 defines what needs to be tested.
 
 The callback provided to `test()` can optionally request assertions to be
-injected, in this case `$equals`. These assertions are called invoked as a
+injected, in this case `$equals`. These assertions are invoked as a
 function and always take the form of `assertion($actual, $expected)`.
 
 The reason that assertions are exposed in this fashion is to provide a bit of
