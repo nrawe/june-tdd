@@ -2,12 +2,13 @@
 
 namespace June\Framework\Runtime;
 
+use June\Framework\{Suite, Unit};
 use June\Framework\Assertions\AssertionException;
 use June\Framework\Contracts\Step;
-use June\Framework\{Suite, Unit};
+use June\Framework\Exceptions\BadUserException;
+use June\Framework\Steps\{Bug, Test};
 use League\CLImate\CLImate;
 use Throwable;
-use June\Framework\Exceptions\BadUserException;
 
 /**
  * Feedback provides an abstraction over information presented to the user.
@@ -47,6 +48,19 @@ class Feedback
         ;
     }
 
+    public function emoji(Step $step): string
+    {
+        if ($step instanceof Bug) {
+            return '🐛';
+        }
+
+        if ($step instanceof Test) {
+            return '💡';
+        }
+
+        return '';
+    }
+
     /**
      * Prints the name of the $step to the user as a failure.
      */
@@ -54,7 +68,7 @@ class Feedback
     {
         $this->cli
             ->bold()
-            ->inline(' - ' . $step->name() . ' ')
+            ->inline(' - ' . $this->emoji($step) . ' ' . $step->name() . ' ')
             ->red()
             ->inline('✗')
         ;
