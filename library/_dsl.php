@@ -30,7 +30,7 @@ function harness(): Harness
  */
 function bug(string $name, callable $steps)
 {
-    harness(null)->test($name, $steps);
+    harness(null)->bug($name, $steps);
 }
 
 /**
