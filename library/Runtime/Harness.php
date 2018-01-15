@@ -59,7 +59,7 @@ class Harness
     /**
      * Registers a bug step.
      */
-    public function bug(string $name, callable $step)
+    public function bug(string $name, callable $body)
     {
         $step = $this->steps->bug($name, $body);
 
