@@ -38,16 +38,8 @@ class Feedback
     }
 
     /**
-     * Prints the name of the $unit to the user.
+     * Returns the emoji appropriate for the given $step.
      */
-    public function unit(Unit $unit): void
-    {
-        $this->cli
-            ->underline()
-            ->out($unit->name())
-        ;
-    }
-
     public function emoji(Step $step): string
     {
         if ($step instanceof Bug) {
@@ -100,6 +92,17 @@ class Feedback
     public function suiteProgress(Suite $suite)
     {
         return $this->cli->progress()->total($suite->count());
+    }
+
+    /**
+     * Prints the name of the $unit to the user.
+     */
+    public function unit(Unit $unit): void
+    {
+        $this->cli
+            ->underline()
+            ->out($unit->name())
+        ;
     }
 
     /**
