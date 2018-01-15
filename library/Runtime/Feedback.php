@@ -33,7 +33,7 @@ class Feedback
     {
         $this->unit($step->unit(null));
         $this->failedStep($step);
-        $this->failureMessage($ex->getMessage());
+        $this->failureMessage('Assertion failed: ' . $ex->getMessage());
     }
 
     /**
@@ -77,7 +77,7 @@ class Feedback
     {
         $this->unit($step->unit(null));
         $this->failedStep($step);
-        $this->failureMessage($ex->getMessage());
+        $this->failureMessage('Oops! ' . $ex->getMessage());
     }
 
     /**
