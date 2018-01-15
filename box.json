@@ -1,0 +1,6 @@
+{
+    "directories": ["library/", "vendor/"],
+    "main": "bin/june.php",
+    "output": "dist/june.phar",
+    "stub": true
+}
