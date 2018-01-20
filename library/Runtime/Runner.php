@@ -7,6 +7,7 @@ use June\Framework\Contracts\Step;
 use June\Framework\Factories\AssertionFactory;
 use June\Framework\Exceptions\{AssertionException, BadUserException};
 use ReflectionFunction;
+use Throwable;
 
 /**
  * Handles the execution of all of the tests contained in a Suite.
