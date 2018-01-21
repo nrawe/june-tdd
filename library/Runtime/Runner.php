@@ -2,9 +2,9 @@
 
 namespace June\Framework\Runtime;
 
-use June\Framework\{Suite, Unit};
+use June\Framework\{Configuration, Suite, Unit};
 use June\Framework\Contracts\Step;
-use June\Framework\Factories\AssertionFactory;
+use June\Framework\Factories\AssertionFactory as Assertions;
 use June\Framework\Exceptions\{AssertionException, BadUserException};
 use ReflectionFunction;
 use Throwable;
@@ -17,9 +17,16 @@ class Runner
     /**
      * Handler for returning assertions.
      * 
-     * @var AssertionFactory
+     * @var Assertions
      */
     protected $assertions;
+
+    /**
+     * The configuration for the runtime.
+     * 
+     * @var Configuration
+     */
+    protected $config;
 
     /**
      * The user feedback for handling output.
@@ -28,10 +35,11 @@ class Runner
      */
     protected $feedback;
 
-    public function __construct(AssertionFactory $assertions, Feedback $feedback)
+    public function __construct(Assertions $assertions, Feedback $feedback, Configuration $config)
     {
         $this->assertions = $assertions;
         $this->feedback = $feedback;
+        $this->config = $config;
     }
 
     /**
@@ -47,7 +55,9 @@ class Runner
             foreach ($unit->steps() as $step) {
                 $progress->advance(1);
 
-                if (! $this->execute($step)) {
+                $failed = ! $this->execute($step);
+
+                if ($failed && $this->config->stopOnFailure) {
                     return false;
                 }
             }
