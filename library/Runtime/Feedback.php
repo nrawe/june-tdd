@@ -9,6 +9,7 @@ use June\Framework\Exceptions\BadUserException;
 use June\Framework\Steps\{Bug, Test};
 use League\CLImate\CLImate;
 use Throwable;
+use const June\VERSION;
 
 /**
  * Feedback provides an abstraction over information presented to the user.
@@ -102,6 +103,14 @@ class Feedback
         $this->cli
             ->underline()
             ->out($unit->name())
+        ;
+    }
+
+    public function version(): void
+    {
+        $this->cli
+            ->out('<bold>Version:</bold> <light_green>' . VERSION . '</light_green>')
+            ->br()
         ;
     }
 

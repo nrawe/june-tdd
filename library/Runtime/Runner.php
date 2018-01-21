@@ -39,6 +39,8 @@ class Runner
      */
     public function run(Suite $suite): bool
     {
+        $this->feedback->version();
+
         $progress = $this->feedback->suiteProgress($suite);
         
         foreach ($suite->units() as $unit) {

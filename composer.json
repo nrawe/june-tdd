@@ -21,6 +21,7 @@
             "June\\Framework\\": "library/"
         },
         "files": [
+            "library/consts.php",
             "library/_dsl.php",
             "library/_helpers.php"
         ]
